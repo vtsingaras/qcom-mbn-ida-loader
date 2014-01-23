@@ -49,35 +49,6 @@ bool GetStageHeader(const unsigned char* p, unsigned size, SBL_HEADER& stgh)
 	stgh.signature_size = dw[7];
 	stgh.cert_chain_addr = dw[8];
 	stgh.cert_chain_size = dw[9];
-
-
-	/*static const unsigned char FWEND[] = { 0xFF, 0xFF, 0x5A, 0xA5 };
-	unsigned char* pend = memsrch_r((unsigned char*)p, size, (unsigned char*)FWEND, sizeof(FWEND));
-	if (!pend) return false;
-	pend += 2;
-
-	unsigned* dw = (unsigned*)p;
-
-	switch (dw[0])
-	{
-	case 0xE59FF008:
-		fwi.base = dw[4] - 0x14;
-		break;
-	case 0xE59FF00C:
-		fwi.base = dw[5] - 0x18;
-		break;
-	case 0xEA000002:
-	case 0xEA000003:
-	default:
-		fwi.base = dw[1] - (pend - p);
-	}
-
-	if ((fwi.base % 4) != 0) return false; //must be aligned
-	if (fwi.base + size < fwi.base) return false; //overflow
-	if ((dw[2] % 2) != 0 || dw[2] - fwi.base >= pend - p - 3)  return false; //align & bounds
-	if ((dw[3] % 2) != 0 || dw[3] - fwi.base >= pend - p - 3)  return false;
-	fwi.hwid = *(unsigned short*)(p + dw[2] - fwi.base);
-	fwi.swvr = *(unsigned short*)(p + dw[3] - fwi.base);*/
 	return true;
 }
 
